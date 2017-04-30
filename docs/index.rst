@@ -22,7 +22,8 @@ Contents
 
 Contributors
 -------------
-Prepared and maintained by Al-Ahmadgaid B. Asaad (`@alasaadstat`_, blog_).
+Prepared and maintained by Al-Ahmadgaid B. Asaad (`@alasaadstat
+<https://twitter.com/alasaadstat>_`, blog_).
 
-.. _alasaadstat: https://twitter.com/alasaadstat
+.. _alasaadstat:
 .. _blog: https://alstatr.blogspot.com/
