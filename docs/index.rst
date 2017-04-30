@@ -17,5 +17,5 @@ Contributors
 -------------
 Prepared and maintained by Al-Ahmadgaid B. Asaad (@alasaadstat_, blog_).
 
-.. _alasaadstat: https://alstatr.blogspot.com/
+.. _alasaadstat: https://twitter.com/alasaadstat
 .. _blog: https://alstatr.blogspot.com/
