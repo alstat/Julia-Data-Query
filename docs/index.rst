@@ -7,10 +7,10 @@ of our problems often have been asked already on forums such as Stack Overflow. 
 this is not the case for Julia. And that is the motivation of this page, it aims to provide
 compilation of all data queries in Julia. I do encourage readers to contribute examples, which
 we will feature at the Contibuted section of different data query packages in Julia, namely
-the DataFramesMeta.jl and the Query.jl.
+the DataFramesMeta.jl_ and the Query.jl_.
 
 In particular, the documentation proceeds by reproducing the examples in RStudio's dplyr documentation
-using DataFramesMeta.jl and Query.jl.
+using DataFramesMeta.jl_ and Query.jl_.
 
 Contents
 -------------
@@ -22,7 +22,10 @@ Contents
 
 Contributors
 -------------
-Prepared and maintained by Al-Ahmadgaid B. Asaad (twitter_, blog_).
+Prepared and maintained by Al-Ahmadgaid B. Asaad (`twitter`_, `blog`_).
 
 .. _alasaadstat: https://twitter.com/alasaadstat
 .. _blog: https://alstatr.blogspot.com/
+.. _DataFramesMeta.jl: https://github.com/JuliaStats/DataFramesMeta.jl
+.. _DataFrames.jl: https://github.com/JuliaStats/DataFrames.jl
+.. _Query.jl: https://github.com/davidanthoff/Query.jl
