@@ -91,7 +91,7 @@ The following are the equivalen of R dplyr's functions:
 +-----------------------------------------------+----------------------------------------+
 | ``@based_on``                                 | ``summarise()``                        |
 +-----------------------------------------------+----------------------------------------+
-| possible but no function                      | ``sample_n()`` (and ``sample_frac()``) |
+| possible but no function yet                  | ``sample_n()`` (and ``sample_frac()``) |
 +-----------------------------------------------+----------------------------------------+
 
 Filter Rows with @where
