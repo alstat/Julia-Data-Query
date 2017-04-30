@@ -22,7 +22,7 @@ Contents
 
 Contributors
 -------------
-Prepared and maintained by Al-Ahmadgaid B. Asaad (`twitter`_, `blog`_).
+Prepared and maintained by Al-Ahmadgaid B. Asaad (twitter_, blog_) and `Other Contributors`_.
 
 .. _alasaadstat: https://twitter.com/alasaadstat
 .. _blog: https://alstatr.blogspot.com/
@@ -30,3 +30,4 @@ Prepared and maintained by Al-Ahmadgaid B. Asaad (`twitter`_, `blog`_).
 .. _DataFrames.jl: https://github.com/JuliaStats/DataFrames.jl
 .. _Query.jl: https://github.com/davidanthoff/Query.jl
 .. _Stack Overflow: http://stackoverflow.com/
+.. _Other Contributors: https://github.com/alstat/Julia-Data-Query/graphs/contributors
