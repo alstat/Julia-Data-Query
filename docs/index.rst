@@ -3,7 +3,7 @@ Data Query in Julia
 In data analysis, one of the challenges faced by statisticians/data scientists/researchers is
 the data cleaning. And for most of us coming from R and Python, we enjoyed the vast resources
 of the documentations of our favorite packages, such as R's dplyr and Python Pandas. And most
-of our problems often have been asked already on forums such as Stack Overflow. Unfortunately,
+of our problems often have been asked already on forums such as `Stack Overflow`_. Unfortunately,
 this is not the case for Julia. And that is the motivation of this page, it aims to provide
 compilation of all data queries in Julia. I do encourage readers to contribute examples, which
 we will feature at the Contibuted section of different data query packages in Julia, namely
@@ -29,3 +29,4 @@ Prepared and maintained by Al-Ahmadgaid B. Asaad (`twitter`_, `blog`_).
 .. _DataFramesMeta.jl: https://github.com/JuliaStats/DataFramesMeta.jl
 .. _DataFrames.jl: https://github.com/JuliaStats/DataFrames.jl
 .. _Query.jl: https://github.com/davidanthoff/Query.jl
+.. _Stack Overflow: http://stackoverflow.com/
