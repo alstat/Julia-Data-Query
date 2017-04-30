@@ -24,7 +24,7 @@ Contributors
 -------------
 Prepared and maintained by Al-Ahmadgaid B. Asaad (twitter_, blog_) and `Other Contributors`_.
 
-.. _alasaadstat: https://twitter.com/alasaadstat
+.. _twitter: https://twitter.com/alasaadstat
 .. _blog: https://alstatr.blogspot.com/
 .. _DataFramesMeta.jl: https://github.com/JuliaStats/DataFramesMeta.jl
 .. _DataFrames.jl: https://github.com/JuliaStats/DataFrames.jl
