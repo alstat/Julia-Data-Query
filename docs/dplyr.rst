@@ -1,4 +1,4 @@
-DataFramesMeta.jl for R's dplyr
+DataFramesMeta.jl
 =============
 I'm going to use R's dplyr as basis for demonstrating the use of DataFramesMeta.jl.
 We'll try to reproduce the example in this site_.
