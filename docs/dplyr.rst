@@ -252,6 +252,7 @@ To select a specific column use ``@select`` macro.
   # │ 336776 │ 2013 │ 9     │ 30  │
 
  Select all columns except those from year to day (inclusive)
+
 .. code-block:: julia
 
   cols = setdiff(names(flights), [:year, :month, :day]);
@@ -338,6 +339,7 @@ Extract Distinct (Unique): unique()
 ~~~~~~~~~~~~~~~
 
 .. code-block:: julia
+
   unique(flights, :tailnum)
   # 4044×19 DataFrames.DataFrame
   # │ Row  │ year │ month │ day │ dep_time │ sched_dep_time │ dep_delay │ arr_time │
