@@ -458,7 +458,7 @@ Summarise Values: @with
 
 .. code-block:: julia
 
-  DataFramesMeta.@with(flights, mean(dropna(:dep_delay)))
+  @with(flights, mean(dropna(:dep_delay)))
   # 12.639070257304708
 
 Randomly Sample Rows
@@ -511,7 +511,7 @@ Grouped Operations
 
 .. code-block:: julia
 
-  by_tailnum = DataFrames.groupby(flights, :tailnum)
+  by_tailnum = groupby(flights, :tailnum)
   delay = @based_on(by_tailnum,
     count = length(:tailnum),
     dist = mean(dropna(:distance)),
@@ -538,3 +538,155 @@ Grouped Operations
   # │ 2960 │ "N998DL" │ 77    │ 857.818 │ 16.3947   │
   # │ 2961 │ "N999DN" │ 61    │ 895.459 │ 14.3115   │
   # │ 2962 │ "N9EAMQ" │ 248   │ 674.665 │ 9.23529   │
+
+We could use these to find the number of planes and the number of flights
+that go to each possible destination:
+
+.. code-block:: julia
+
+  destinations = groupby(flights, :dest)
+  @based_on(destinations,
+    planes = length(unique(:tailnum)),
+    flights = length(:dest)
+  )
+  # 105×3 DataFrames.DataFrame
+  # │ Row │ dest  │ planes │ flights │
+  # ├─────┼───────┼────────┼─────────┤
+  # │ 1   │ "ABQ" │ 108    │ 254     │
+  # │ 2   │ "ACK" │ 58     │ 265     │
+  # │ 3   │ "ALB" │ 172    │ 439     │
+  # │ 4   │ "ANC" │ 6      │ 8       │
+  # │ 5   │ "ATL" │ 1180   │ 17215   │
+  # │ 6   │ "AUS" │ 993    │ 2439    │
+  # │ 7   │ "AVL" │ 159    │ 275     │
+  # │ 8   │ "BDL" │ 186    │ 443     │
+  # ⋮
+  # │ 97  │ "SRQ" │ 373    │ 1211    │
+  # │ 98  │ "STL" │ 960    │ 4339    │
+  # │ 99  │ "STT" │ 87     │ 522     │
+  # │ 100 │ "SYR" │ 383    │ 1761    │
+  # │ 101 │ "TPA" │ 1126   │ 7466    │
+  # │ 102 │ "TUL" │ 105    │ 315     │
+  # │ 103 │ "TVC" │ 60     │ 101     │
+  # │ 104 │ "TYS" │ 273    │ 631     │
+  # │ 105 │ "XNA" │ 176    │ 1036    │
+
+Example of progressively rolling-up a dataset:
+
+.. code-block:: julia
+
+  daily = groupby(flights, [:year, :month, :day])
+  per_day = @based_on(daily, flights = length(:day))
+  # 365×4 DataFrames.DataFrame
+  # │ Row │ year │ month │ day │ flights │
+  # ├─────┼──────┼───────┼─────┼─────────┤
+  # │ 1   │ 2013 │ 1     │ 1   │ 842     │
+  # │ 2   │ 2013 │ 1     │ 2   │ 943     │
+  # │ 3   │ 2013 │ 1     │ 3   │ 914     │
+  # │ 4   │ 2013 │ 1     │ 4   │ 915     │
+  # │ 5   │ 2013 │ 1     │ 5   │ 720     │
+  # │ 6   │ 2013 │ 1     │ 6   │ 832     │
+  # │ 7   │ 2013 │ 1     │ 7   │ 933     │
+  # │ 8   │ 2013 │ 1     │ 8   │ 899     │
+  # ⋮
+  # │ 357 │ 2013 │ 12    │ 23  │ 985     │
+  # │ 358 │ 2013 │ 12    │ 24  │ 761     │
+  # │ 359 │ 2013 │ 12    │ 25  │ 719     │
+  # │ 360 │ 2013 │ 12    │ 26  │ 936     │
+  # │ 361 │ 2013 │ 12    │ 27  │ 963     │
+  # │ 362 │ 2013 │ 12    │ 28  │ 814     │
+  # │ 363 │ 2013 │ 12    │ 29  │ 888     │
+  # │ 364 │ 2013 │ 12    │ 30  │ 968     │
+  # │ 365 │ 2013 │ 12    │ 31  │ 776     │
+
+  per_month = @based_on(groupby(per_day, [:year, :month]), flights = sum(:flights))
+  # 12×3 DataFrames.DataFrame
+  # │ Row │ year │ month │ flights │
+  # ├─────┼──────┼───────┼─────────┤
+  # │ 1   │ 2013 │ 1     │ 27004   │
+  # │ 2   │ 2013 │ 2     │ 24951   │
+  # │ 3   │ 2013 │ 3     │ 28834   │
+  # │ 4   │ 2013 │ 4     │ 28330   │
+  # │ 5   │ 2013 │ 5     │ 28796   │
+  # │ 6   │ 2013 │ 6     │ 28243   │
+  # │ 7   │ 2013 │ 7     │ 29425   │
+  # │ 8   │ 2013 │ 8     │ 29327   │
+  # │ 9   │ 2013 │ 9     │ 27574   │
+  # │ 10  │ 2013 │ 10    │ 28889   │
+  # │ 11  │ 2013 │ 11    │ 27268   │
+  # │ 12  │ 2013 │ 12    │ 28135   │
+
+  per_year = @based_on(groupby(per_day, [:year]), flights = sum(:flights))
+  # 1×2 DataFrames.DataFrame
+  # │ Row │ year │ flights │
+  # ├─────┼──────┼─────────┤
+  # │ 1   │ 2013 │ 336776  │
+
+Chaining Operations
+-----------------
+What we've done above so far is not based on chaining, in R the popular operator for doing
+this is the magrittr's pipe operator ``%>%``. In Julia, this is similar to ``|>``. Consider
+the following example from dplyr's website.
+
+.. code-block:: julia
+
+  a1 = @select flights :year :month :day :arr_delay :dep_delay
+  a2 = groupby(a1, [:year, :month, :day])
+  a3 = @based_on(a2,
+    arr = mean(dropna(:arr_delay)),
+    dep = mean(dropna(:dep_delay)))
+  a4 = @where(a3, (:arr .> 30) | (:dep .> 30))
+
+We can do chaining using ``|>`` with the help of ``@linq`` macro. So that,
+
+.. code-block:: julia
+
+  @linq flights |>
+    @select(:year, :month, :day, :arr_delay, :dep_delay) |>
+    groupby([:year, :month, :day]) |>
+    based_on(
+      arr = mean(dropna(:arr_delay)),
+      dep = mean(dropna(:dep_delay))) |>
+    @where((:arr .> 30) | (:dep .> 30))
+
+Another alternative, which for me personally is a lot cleaner is to use the pipe
+macro ``@>`` from the Lazy.jl package. The above codes is equivalent to
+
+.. code-block:: julia
+  using Lazy: @>
+
+  @> begin
+    flights
+    @select :year :month :day :arr_delay :dep_delay
+    DataFrames.groupby([:year, :month, :day])
+    @based_on(
+      arr = mean(dropna(:arr_delay)),
+      dep = mean(dropna(:dep_delay))
+    )
+    @where ((:arr .> 30) | (:dep .> 30))
+  end
+
+The three approaches above returns the same result give below:
+
+.. code-block:: txt
+  # 49×5 DataFrames.DataFrame
+  # │ Row │ year │ month │ day │ arr     │ dep     │
+  # ├─────┼──────┼───────┼─────┼─────────┼─────────┤
+  # │ 1   │ 2013 │ 1     │ 16  │ 34.2474 │ 24.6129 │
+  # │ 2   │ 2013 │ 1     │ 31  │ 32.6029 │ 28.6584 │
+  # │ 3   │ 2013 │ 2     │ 11  │ 36.2901 │ 39.0736 │
+  # │ 4   │ 2013 │ 2     │ 27  │ 31.2525 │ 37.7633 │
+  # │ 5   │ 2013 │ 3     │ 8   │ 85.8622 │ 83.5369 │
+  # │ 6   │ 2013 │ 3     │ 18  │ 41.2919 │ 30.118  │
+  # │ 7   │ 2013 │ 4     │ 10  │ 38.4123 │ 33.0237 │
+  # │ 8   │ 2013 │ 4     │ 12  │ 36.0481 │ 34.8384 │
+  # ⋮
+  # │ 41  │ 2013 │ 10    │ 7   │ 39.0173 │ 39.1467 │
+  # │ 42  │ 2013 │ 10    │ 11  │ 18.923  │ 31.2318 │
+  # │ 43  │ 2013 │ 12    │ 5   │ 51.6663 │ 52.328  │
+  # │ 44  │ 2013 │ 12    │ 8   │ 36.9118 │ 21.5153 │
+  # │ 45  │ 2013 │ 12    │ 9   │ 42.5756 │ 34.8002 │
+  # │ 46  │ 2013 │ 12    │ 10  │ 44.5088 │ 26.4655 │
+  # │ 47  │ 2013 │ 12    │ 14  │ 46.3975 │ 28.3616 │
+  # │ 48  │ 2013 │ 12    │ 17  │ 55.8719 │ 40.7056 │
+  # │ 49  │ 2013 │ 12    │ 23  │ 32.226  │ 32.2541 │
