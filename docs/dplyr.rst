@@ -653,6 +653,7 @@ Another alternative, which for me personally is a lot cleaner is to use the pipe
 macro ``@>`` from the Lazy.jl package. The above codes is equivalent to
 
 .. code-block:: julia
+
   using Lazy: @>
 
   @> begin
@@ -669,6 +670,7 @@ macro ``@>`` from the Lazy.jl package. The above codes is equivalent to
 The three approaches above returns the same result give below:
 
 .. code-block:: txt
+
   # 49×5 DataFrames.DataFrame
   # │ Row │ year │ month │ day │ arr     │ dep     │
   # ├─────┼──────┼───────┼─────┼─────────┼─────────┤
