@@ -659,7 +659,7 @@ macro ``@>`` from the Lazy.jl package. The above codes is equivalent to
   @> begin
     flights
     @select :year :month :day :arr_delay :dep_delay
-    DataFrames.groupby([:year, :month, :day])
+    groupby([:year, :month, :day])
     @based_on(
       arr = mean(dropna(:arr_delay)),
       dep = mean(dropna(:dep_delay))
