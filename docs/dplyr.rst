@@ -335,7 +335,7 @@ But because ``@select`` drops all the variables not explicitly mentioned, it’s
   # │ 336776 │ 2013 │ 9     │ 30  │ NA       │ 840            │ NA        │
   # more columns ...
 
-Extract Distinct (Unique): unique()
+Extract Distinct Rows: unique()
 ~~~~~~~~~~~~~~~
 
 .. code-block:: julia

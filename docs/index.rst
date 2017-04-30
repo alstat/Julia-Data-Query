@@ -13,8 +13,8 @@ improve it. I do encourage readers to contribute their examples for references.
 We'll feature this at the Contributed section of the two data query packages, namely the DataFramesMeta.jl_
 and the Query.jl_.
 
-In particular, the documentation proceeds by reproducing the examples in RStudio's dplyr documentation
-using DataFramesMeta.jl_ and Query.jl_.
+Specifically, the documentation proceeds by reproducing the examples in `RStudio's dplyr documentation`_
+using both DataFramesMeta.jl_ and Query.jl_.
 
 Contents
 -------------
@@ -40,3 +40,4 @@ Prepared and maintained by Al-Ahmadgaid B. Asaad (twitter_, blog_) and `Other Co
 .. _Github: https://github.com/JuliaLang/julia
 .. _Gitter: https://gitter.im/JuliaLang/julia
 .. _Julia Discourse: https://discourse.julialang.org/
+.. _RStudio's dplyr documentation: https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html
