@@ -6,12 +6,11 @@ of the documentations of our favorite packages, such as `R's dplyr`_ and `Python
 of our problems often have answers already on forums such as `Stack Overflow`_. Unfortunately,
 this is not the case for Julia, all we have right now is the active community, on places such
 as Github_, Gitter_ and `Julia Discourse`_. And of course we like to invite more users and grow
-the community even bigger. This is the motivation of the project, by giving newcomers a good place to start with.
+the community even bigger. This is the motivation of the project, by giving newcomers a good place to start.
 This project aims to provide compilation of examples of data queries in Julia. The advantage of
 doing this is that we can track the limitations of the current data query packages and further
-improve it. I do encourage readers to contribute their examples, even for as
-simple as providing links to already asked questions at `Stack Overflow`_ and other forums for references.
-We'll feature this at the Contributed the two data query packages, namely the DataFramesMeta.jl_
+improve it. I do encourage readers to contribute their examples for references.
+We'll feature this at the Contributed section of the two data query packages, namely the DataFramesMeta.jl_
 and the Query.jl_.
 
 In particular, the documentation proceeds by reproducing the examples in RStudio's dplyr documentation
