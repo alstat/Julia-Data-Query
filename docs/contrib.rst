@@ -24,6 +24,16 @@ Transform
   **Solution using DataFramesMeta.jl:**
 
   .. code-block:: julia
+    using DataFrames
+    using DataFramesMeta
+    using Lazy: @>
+    using RDatasets
+
+    women = dataset("datasets", "women");
+    women_new = vcat(
+                  women,
+                  DataFrame(Height = [NA; NA], Weight = @data [1; NA])
+                )
 
     @> begin
         women_new
@@ -65,6 +75,16 @@ Transform
 
   .. code-block:: julia
 
+    using DataFrames
+    using Query
+    using RDatasets
+
+    women = dataset("datasets", "women");
+    women_new = vcat(
+                  women,
+                  DataFrame(Height = [NA; NA], Weight = @data [1; NA])
+                )
+                
     @from i in women_new begin
         @where !isnull(i.Height)
         @select {
