@@ -45,21 +45,21 @@ Transform
 
   .. code-block:: julia
 
-  @> begin
-      women_new
-      @transform(
-          Class = @> begin
-              function (x)
-                  isna(x)       ? NA :
-                   0 <= x <= 60 ?  1 :
-                  61 <= x <= 67 ?  2 :
-                  68 <= x <= 72 ?  3 :
-                  NA
-              end
-              map(:Height)
-          end
-      )
-  end
+    @> begin
+        women_new
+        @transform(
+            Class = @> begin
+                function (x)
+                    isna(x)       ? NA :
+                     0 <= x <= 60 ?  1 :
+                    61 <= x <= 67 ?  2 :
+                    68 <= x <= 72 ?  3 :
+                    NA
+                end
+                map(:Height)
+            end
+        )
+    end
 
   **Solution using Query.jl:**
 
