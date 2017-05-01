@@ -97,32 +97,12 @@ end
 end
 
 Filter
-~~~~~~~~~~~~~~~~~
-
-Summarize
-~~~~~~~~~~~~~~~~~
-
-Join
-~~~~~~~~~~~~~~~~~
-
-
-
-
-Query.jl
 ----------------
-This section contains examples using Query.jl package.
-
-Transform
-~~~~~~~~~~~~~~~~~
-
-Filter
-~~~~~~~~~~~~~~~~~
 
 Summarize
-~~~~~~~~~~~~~~~~~
+----------------
 
 Join
-~~~~~~~~~~~~~~~~~
-
+----------------
 
 .. _link: https://discourse.julialang.org/t/julia-dataframesmeta-transformation/3435
