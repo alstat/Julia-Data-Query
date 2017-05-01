@@ -22,8 +22,7 @@ Transform
              sector = replace(sector, height >= 68 & height <= 72, "3"))
 
 
-  **Solution: DataFramesMeta.jl**
-  In Julia's DataFramesMeta we can do this as follows:
+  **Solution using DataFramesMeta.jl:**
 
   .. code-block:: julia
 
@@ -43,8 +42,7 @@ Transform
     )
     end
 
-  And if we want to deal with the complete data without removing the ``NA``. Then the following
-  is the remedy:
+  Without removing the ``NA``:
 
   .. code-block:: julia
 
@@ -64,8 +62,7 @@ Transform
     )
     end
 
-  **Solution: Query.jl**
-  Equivalently, we can proceed using Query.jl as follows:
+  **Solution using Query.jl:**
 
   .. code-block:: julia
 
@@ -81,7 +78,7 @@ Transform
         @collect DataFrame
     end
 
-  And if we are to consider all observations without removing the ``NA`` then we can do
+  Without removing the ``NA``:
 
   .. code-block:: julia
 
