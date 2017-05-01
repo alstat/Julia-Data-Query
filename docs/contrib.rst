@@ -5,10 +5,6 @@ The following contains examples contributed by the community
 
 This section contains examples using DataFramesMeta.jl package.
 
-Transform
------------------
-1. This example is available in this link_. We want to reproduce the following R codes:
-
 .. code-block:: R
 
 library(dplyr)
@@ -21,6 +17,10 @@ women_new %>%
          sector = replace(sector, height >= 61 & height <= 67, "2"),
          sector = replace(sector, height >= 68 & height <= 72, "3"))
 
+
+Transform
+-----------------
+1. This example is available in this link_. We want to reproduce the following R codes:
 
   **Solution: DataFramesMeta.jl**
   In Julia's DataFramesMeta we can do this as follows:
