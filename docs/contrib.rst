@@ -24,6 +24,7 @@ Transform
   **Solution using DataFramesMeta.jl:**
 
   .. code-block:: julia
+  
     using DataFrames
     using DataFramesMeta
     using Lazy: @>
@@ -84,7 +85,7 @@ Transform
                   women,
                   DataFrame(Height = [NA; NA], Weight = @data [1; NA])
                 )
-                
+
     @from i in women_new begin
         @where !isnull(i.Height)
         @select {
